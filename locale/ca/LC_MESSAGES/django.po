@@ -1,0 +1,241 @@
+# CATALAN TRANSLATION OF EVENTS FOR MACHIAVELLI APP IN CONDOTTIERI.
+# Copyright (C) Rafael Romero Mora
+# This file is distributed under the same license as the 'machiavelli' package.
+# FIRST AUTHOR <longrider186@yahoo.com>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-03-19 13:30+0100\n"
+"PO-Revision-Date: 2010-03-19 13:30+0100\n"
+"Last-Translator: Rafael Romero Mora <longrider186@yahoo.com>\n"
+"Language-Team: CA <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: models.py:54
+#, python-format
+msgid "the army in %s"
+msgstr "l'exercit a %s"
+
+#: models.py:56
+#, python-format
+msgid "the fleet in %s"
+msgstr "la flota a %s"
+
+#: models.py:58
+#, python-format
+msgid "the garrison in %s"
+msgstr "la guarnició a %s"
+
+#: models.py:112
+#, python-format
+msgid "New %(type)s in %(area)s."
+msgstr "Apareix %(type)s a %(area)s."
+
+#: models.py:139
+#, python-format
+msgid "%(type)s in %(area)s is disbanded."
+msgstr "Es disol %(type)s a %(area)s."
+
+#: models.py:145
+#, python-format
+msgid "Autonomous %(type)s in %(area)s is disbanded."
+msgstr "%(type)s autònoma a %(area)s és desbandada."
+
+#: models.py:185
+#, python-format
+msgid "%(unit)s tries to go to %(area)s."
+msgstr "%(unit)s intenta anar a %(area)s."
+
+#: models.py:190
+#, python-format
+msgid "%(unit)s besieges the city."
+msgstr "%(unit)s assetja la ciutat."
+
+#: models.py:192
+#, python-format
+msgid "%(unit)s tries to convert into %(type)s."
+msgstr "%(unit)s intenta convertir-se en %(type)s."
+
+#: models.py:197
+#, python-format
+msgid "%(unit)s must convoy %(subunit)s to %(area)s."
+msgstr "%(unit)s intenta transportar a %(subunit)s a %(area)s."
+
+#: models.py:205
+#, python-format
+msgid "%(unit)s supports %(subunit)s to hold its position."
+msgstr "%(unit)s dona suport a %(subunit)s a mantenir la seva posició."
+
+#: models.py:211
+#, python-format
+msgid "%(unit)s supports %(subunit)s to go to %(area)s."
+msgstr "%(unit)s dona suport a a %(subunit)s a anar a %(area)s."
+
+#: models.py:218
+#, python-format
+msgid "%(unit)s supports %(subunit)s to convert into %(type)s."
+msgstr "%(unit)s dona suport a %(subunit)s a convertir-se en %(type)s."
+
+#: models.py:266
+#, python-format
+msgid "Conflicts in %(area)s result in a standoff."
+msgstr "Els conflictes a %(area)s acaben en empat."
+
+#: models.py:290
+#, python-format
+msgid "%(unit)s converts into %(type)s."
+msgstr "%(unit)s es converteix en %(type)s."
+
+#: models.py:315
+#, python-format
+msgid "%(country)s gets control of %(area)s."
+msgstr "%(country)s aconsegueix el control de %(area)s."
+
+#: models.py:341
+#, python-format
+msgid "%(unit)s advances into %(destination)s."
+msgstr "%(unit)s avança a %(destination)s."
+
+#: models.py:370
+#, python-format
+msgid "%(unit)s garrisons in the city."
+msgstr "%(unit)s es refugia a la ciutat."
+
+#: models.py:375
+#, python-format
+msgid "%(unit)s retreats to %(destination)s."
+msgstr "%(unit)s es retira a %(destination)s"
+
+#: models.py:392
+msgid "cannot carry out its support order."
+msgstr "no pot executar la seva ordre de suport."
+
+#: models.py:393
+msgid "must retreat."
+msgstr "ha de retirar-se."
+
+#: models.py:394
+msgid "surrenders."
+msgstr "es rendeix."
+
+#: models.py:395
+msgid "is now besieging."
+msgstr "comença el seu setge."
+
+#: models.py:396
+msgid "changes of country."
+msgstr "canvia de país."
+
+#: models.py:397
+msgid "becomes autonomous."
+msgstr "es converteix en autònoma."
+
+#: models.py:510
+msgid "Government has been overthrown"
+msgstr "El govern ha estat derrocat"
+
+#: models.py:511
+msgid "Has been conquered"
+msgstr "Ha estat conquerit"
+
+#: models.py:512
+msgid "Has been declared enemy of Christendom"
+msgstr "Ha estat declarat enemic de la Cristiandat"
+
+#: models.py:513
+msgid "Has been eliminated"
+msgstr "Has estat eliminat"
+
+#: models.py:514
+msgid "Leader has been assassinated"
+msgstr "El líder ha estat assassinat"
+
+#: models.py:515
+msgid "Excommunication has been lifted"
+msgstr "S'ha perdonat la excomunicació"
+
+#: models.py:605
+#, python-format
+msgid "%(area)s is affected by famine."
+msgstr "%(area)s està afectada per la fam."
+
+#: models.py:606
+#, python-format
+msgid "%(area)s has been affected by plague."
+msgstr "%(area)s ha estat afectada per una plaga."
+
+#: models.py:607
+#, python-format
+msgid "A rebellion has broken out in %(area)s."
+msgstr "Una rebel·lió ha esclatat a %(area)s."
+
+#: models.py:608
+#, python-format
+msgid "%(area)s is affected by a storm."
+msgstr "%(area)s està afectada per una tempesta."
+
+#: models.py:690
+#, python-format
+msgid "%(country)s raises %(ducats)s ducats."
+msgstr "%(country)s recapta %(ducats)s ducats."
+
+#: models.py:723
+#, python-format
+msgid "%(country)s pays %(ducats)sd to relief famine in %(area)s"
+msgstr "%(country)s paga %(ducats)sd per alleugerir la fam a %(area)s."
+
+#: models.py:725
+#, python-format
+msgid "%(country)s pays %(ducats)sd to pacify the rebellion in %(area)s"
+msgstr "%(country)s paga %(ducats)sd per a pacificar la rebel·lió a %(area)s"
+
+#: models.py:727
+#, python-format
+msgid "%(country)s pays %(ducats)sd to cause a rebellion in %(area)s"
+msgstr "%(country)s paga %(ducats)sd per causar una rebel·lió a %(area)s"
+
+#: models.py:729
+#, python-format
+msgid "%(country)s pays %(ducats)sd to protect %(unit)s from bribes"
+msgstr "%(country)s paga %(ducats)sd per protegir a %(unit)s de soborns"
+
+#: models.py:731
+#, python-format
+msgid "%(country)s pays %(ducats)sd to disband %(unit)s"
+msgstr "%(country)s paga %(ducats)sd per a desbandar %(unit)s"
+
+#: models.py:733
+#, python-format
+msgid "%(country)s pays %(ducats)sd to buy %(unit)s"
+msgstr "%(country)s paga %(ducats)sd per comprar %(unit)s."
+
+#: models.py:735
+#, python-format
+msgid ""
+"%(country)s pays %(ducats)sd to turn %(unit)s into an autonomous garrison"
+msgstr ""
+"%(country)s paga %(ducats)sd per a convertir %(unit)s en guarnició autònoma"
+
+#: models.py:737
+msgid "Unknown expense"
+msgstr "Despesa desconeguda"
+
+#: paginator.py:27
+msgid "Spring"
+msgstr "Primavera"
+
+#: paginator.py:28
+msgid "Summer"
+msgstr "Estiu"
+
+#: paginator.py:29
+msgid "Fall"
+msgstr "Tardor"
+
+#~ msgid "%(country)s's %(type)s in %(area)s is disbanded."
+#~ msgstr "%(type)s de %(country)s a %(area)s és desbandada."

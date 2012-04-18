@@ -19,7 +19,7 @@ msgstr ""
 #: models.py:54
 #, python-format
 msgid "the army in %s"
-msgstr "l'exercit a %s"
+msgstr "l'exèrcit a %s"
 
 #: models.py:56
 #, python-format
@@ -113,7 +113,7 @@ msgstr "%(unit)s es retira a %(destination)s"
 
 #: models.py:392
 msgid "cannot carry out its support order."
-msgstr "no pot executar la seva ordre de suport."
+msgstr "no pot executar la seva ordre de donar suport."
 
 #: models.py:393
 msgid "must retreat."

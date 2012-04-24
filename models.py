@@ -547,7 +547,7 @@ class CountryEvent(BaseEvent):
 		return "season_%(season)s" % {'season': self.season}
 
 def log_overthrow(sender, **kwargs):
-	assert isinstance(sender, Player), "sender must be a Player"
+	assert isinstance(sender, Revolution), "sender must be a Revolution"
 	log_event(CountryEvent, sender.game,
 					classname="CountryEvent",
 					country = sender.country,

@@ -1,4 +1,4 @@
-from condottieri_events.models import *
+import condottieri_events.models as events
 from django.contrib import admin
 
 class BaseEventAdmin(admin.ModelAdmin):
@@ -85,17 +85,17 @@ class ExpenseEventAdmin(admin.ModelAdmin):
 	list_display = ('game', '__unicode__', 'year')
 	list_filter = ('game', 'year')
 
-admin.site.register(BaseEvent, BaseEventAdmin)
-admin.site.register(NewUnitEvent, NewUnitEventAdmin)
-admin.site.register(DisbandEvent, DisbandEventAdmin)
-admin.site.register(OrderEvent, OrderEventAdmin)
-admin.site.register(StandoffEvent, StandoffEventAdmin)
-admin.site.register(ConversionEvent, ConversionEventAdmin)
-admin.site.register(ControlEvent, ControlEventAdmin)
-admin.site.register(MovementEvent, MovementEventAdmin)
-admin.site.register(RetreatEvent, RetreatEventAdmin)
-admin.site.register(UnitEvent, UnitEventAdmin)
-admin.site.register(CountryEvent, CountryEventAdmin)
-admin.site.register(DisasterEvent, DisasterEventAdmin)
-admin.site.register(IncomeEvent, IncomeEventAdmin)
-admin.site.register(ExpenseEvent, ExpenseEventAdmin)
+admin.site.register(events.BaseEvent, BaseEventAdmin)
+admin.site.register(events.NewUnitEvent, NewUnitEventAdmin)
+admin.site.register(events.DisbandEvent, DisbandEventAdmin)
+admin.site.register(events.OrderEvent, OrderEventAdmin)
+admin.site.register(events.StandoffEvent, StandoffEventAdmin)
+admin.site.register(events.ConversionEvent, ConversionEventAdmin)
+admin.site.register(events.ControlEvent, ControlEventAdmin)
+admin.site.register(events.MovementEvent, MovementEventAdmin)
+admin.site.register(events.RetreatEvent, RetreatEventAdmin)
+admin.site.register(events.UnitEvent, UnitEventAdmin)
+admin.site.register(events.CountryEvent, CountryEventAdmin)
+admin.site.register(events.DisasterEvent, DisasterEventAdmin)
+admin.site.register(events.IncomeEvent, IncomeEventAdmin)
+admin.site.register(events.ExpenseEvent, ExpenseEventAdmin)

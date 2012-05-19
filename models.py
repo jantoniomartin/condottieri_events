@@ -65,7 +65,7 @@ BaseEvent is the parent class for all kind of game events.
 	def country_class(self):
 		""" Returns a css class name if the event is related to a country """
 		try:
-			country = self.get_concrete().country.css_class
+			country = self.get_concrete().country.static_name
 		except:
 			country = ''
 		return country

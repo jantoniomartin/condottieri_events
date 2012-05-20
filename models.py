@@ -115,7 +115,7 @@ def log_new_unit(sender, **kwargs):
 	assert isinstance(sender, machiavelli.Unit), "sender must be a Unit"
 	log_event(NewUnitEvent, sender.player.game,
 					classname="NewUnitEvent",
-					country=sender.player.country,
+					country=sender.player.contender.country,
 					type=sender.type,
 					area=sender.area.board_area)
 
@@ -146,7 +146,7 @@ def log_disband(sender, **kwargs):
 	assert isinstance(sender, machiavelli.Unit), "sender must be a Unit"
 	log_event(DisbandEvent, sender.player.game,
 					classname="DisbandEvent",
-					country=sender.player.country,
+					country=sender.player.contender.country,
 					type=sender.type,
 					area=sender.area.board_area)
 
@@ -237,7 +237,7 @@ def log_order(sender, **kwargs):
 		subdestination = None
 	log_event(OrderEvent, sender.unit.player.game,
 					classname="OrderEvent",
-					country = sender.player.country,
+					country = sender.player.contender.country,
 					type = sender.unit.type,
 					origin = sender.unit.area.board_area,
 					code = sender.code,
@@ -292,7 +292,7 @@ def log_conversion(sender, **kwargs):
 	assert isinstance(sender, machiavelli.Unit), "sender must be a Unit"
 	log_event(ConversionEvent, sender.player.game,
 					classname="ConversionEvent",
-					country=sender.player.country,
+					country=sender.player.contender.country,
 					area=sender.area.board_area,
 					before=kwargs["before"],
 					after=kwargs["after"])
@@ -317,7 +317,7 @@ def log_control(sender, **kwargs):
 	assert isinstance(sender, machiavelli.GameArea), "sender must be a GameArea"
 	log_event(ControlEvent, sender.player.game,
 					classname="ControlEvent",
-					country=sender.player.country,
+					country=sender.player.contender.country,
 					area=sender.board_area)
 
 signals.area_controlled.connect(log_control)
@@ -343,7 +343,7 @@ def log_movement(sender, **kwargs):
 	assert isinstance(sender, machiavelli.Unit), "sender must be a Unit"
 	log_event(MovementEvent, sender.player.game,
 					classname="MovementEvent",
-					country = sender.player.country,
+					country = sender.player.contender.country,
 					type=sender.type,
 					origin=sender.area.board_area,
 					destination=kwargs['destination'].board_area)
@@ -377,7 +377,7 @@ def log_retreat(sender, **kwargs):
 	assert isinstance(sender, machiavelli.Unit), "sender must be a Unit"
 	log_event(RetreatEvent, sender.player.game,
 					classname="RetreatEvent",
-					country = sender.player.country,
+					country = sender.player.contender.country,
 					type=sender.type,
 					origin=sender.area.board_area,
 					destination=kwargs['destination'].board_area)
@@ -440,7 +440,7 @@ def log_broken_support(sender, **kwargs):
 	assert isinstance(sender, machiavelli.Unit), "sender must be a Unit"
 	log_event(UnitEvent, sender.player.game,
 					classname="UnitEvent",
-					country = sender.player.country,
+					country = sender.player.contender.country,
 					type=sender.type,
 					area=sender.area.board_area,
 					message=0)
@@ -451,7 +451,7 @@ def log_forced_retreat(sender, **kwargs):
 	assert isinstance(sender, machiavelli.Unit), "sender must be a Unit"
 	log_event(UnitEvent, sender.player.game,
 				classname="UnitEvent",
-				country = sender.player.country,
+				country = sender.player.contender.country,
 				type=sender.type,
 				area=sender.area.board_area,
 				message=1)
@@ -462,7 +462,7 @@ def log_unit_surrender(sender, **kwargs):
 	assert isinstance(sender, machiavelli.Unit), "sender must be a Unit"
 	log_event(UnitEvent, sender.player.game,
 				classname="UnitEvent",
-				country = sender.player.country,
+				country = sender.player.contender.country,
 				type=sender.type,
 				area=sender.area.board_area,
 				message=2)
@@ -473,7 +473,7 @@ def log_siege_start(sender, **kwargs):
 	assert isinstance(sender, machiavelli.Unit), "sender must be a Unit"
 	log_event(UnitEvent, sender.player.game,
 				classname="UnitEvent",
-				country = sender.player.country,
+				country = sender.player.contender.country,
 				type=sender.type,
 				area=sender.area.board_area,
 				message=3)
@@ -484,7 +484,7 @@ def log_change_country(sender, **kwargs):
 	assert isinstance(sender, machiavelli.Unit), "sender must be a Unit"
 	log_event(UnitEvent, sender.player.game,
 				classname="UnitEvent",
-				country = sender.player.country,
+				country = sender.player.contender.country,
 				type=sender.type,
 				area=sender.area.board_area,
 				message=4)
@@ -495,7 +495,7 @@ def log_to_autonomous(sender, **kwargs):
 	assert isinstance(sender, machiavelli.Unit), "sender must be a Unit"
 	log_event(UnitEvent, sender.player.game,
 				classname="UnitEvent",
-				country = sender.player.country,
+				country = sender.player.contender.country,
 				type=sender.type,
 				area=sender.area.board_area,
 				message=5)
@@ -743,7 +743,7 @@ def log_expense(sender, **kwargs):
 		_unit_type = ""
 	log_event(ExpenseEvent, sender.player.game,
 					classname="ExpenseEvent",
-					country=sender.player.country,
+					country=sender.player.contender.country,
 					ducats=sender.ducats,
 					type=sender.type,
 					area=_area,

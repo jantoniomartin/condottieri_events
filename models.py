@@ -564,7 +564,7 @@ def log_excommunication(sender, **kwargs):
 	assert isinstance(sender, machiavelli.Player), "sender must be a Player"
 	log_event(CountryEvent, sender.game,
 					classname="CountryEvent",
-					country = sender.country,
+					country = sender.contender.country,
 					message = 2)
 
 signals.country_excommunicated.connect(log_excommunication)
@@ -582,7 +582,7 @@ def log_assassination(sender, **kwargs):
 	assert isinstance(sender, machiavelli.Player), "sender must be a Player"
 	log_event(CountryEvent, sender.game,
 					classname="CountryEvent",
-					country = sender.country,
+					country = sender.contender.country,
 					message = 4)
 
 signals.player_assassinated.connect(log_assassination)
@@ -591,7 +591,7 @@ def log_lifted_excommunication(sender, **kwargs):
 	assert isinstance(sender, machiavelli.Player), "sender must be a Player"
 	log_event(CountryEvent, sender.game,
 					classname="CountryEvent",
-					country = sender.country,
+					country = sender.contender.country,
 					message = 5)
 
 signals.country_forgiven.connect(log_lifted_excommunication)
@@ -692,7 +692,7 @@ def log_income(sender, **kwargs):
 	assert isinstance(sender, machiavelli.Player), "sender must be a Player"
 	log_event(IncomeEvent, sender.game,
 					classname="IncomeEvent",
-					country=sender.country,
+					country=sender.contender.country,
 					ducats=kwargs['ducats'])
 
 signals.income_raised.connect(log_income)

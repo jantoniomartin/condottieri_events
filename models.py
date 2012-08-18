@@ -509,6 +509,7 @@ COUNTRY_EVENTS = (
 	(3, _('Has been eliminated')),
 	(4, _('Leader has been assassinated')),
 	(5, _('Excommunication has been lifted')),
+	(6, _('Leader suffered an assassination attempt')),
 )
 
 class CountryEvent(BaseEvent):
@@ -527,6 +528,8 @@ class CountryEvent(BaseEvent):
 	* The leader has been assassinated.
 
 	* An excommunication has been lifted.
+
+	* An assassination has been attempted.
 	
 	Each condition must have its own signal.
 	"""
@@ -596,6 +599,14 @@ def log_lifted_excommunication(sender, **kwargs):
 
 signals.country_forgiven.connect(log_lifted_excommunication)
 
+def log_assassination_attempt(sender, **kwargs):
+	assert isinstance(sender, machiavelli.Player), "sender must be a Player"
+	log_event(CountryEvent, sender.game,
+					classname="CountryEvent",
+					country = sender.contender.country,
+					message = 6)
+
+signals.assassination_attempted.connect(log_assassination_attempt)
 
 DISASTER_EVENTS = (
 	(0, _('%(area)s is affected by famine.')),

@@ -303,22 +303,30 @@ class ControlEvent(BaseEvent):
 	""" Event triggered when a player gets the control of a province. """
 	country = models.ForeignKey(scenarios.Country)
 	area = models.ForeignKey(scenarios.Area)
+	new_home = models.BooleanField(default=False)
 
 	def event_class(self):
 		return "control-event"
 
 	def __unicode__(self):
-		return _("%(country)s gets control of %(area)s.") % {
+		if self.new_home:
+			return _("%(area)s is now home of %(country)s.") % {
+						'country': self.country,
+						'area': self.area.name
+						}
+		else:
+			return _("%(country)s gets control of %(area)s.") % {
 						'country': self.country,
 						'area': self.area.name
 						}
 
-def log_control(sender, **kwargs):
+def log_control(sender, new_home=False, **kwargs):
 	assert isinstance(sender, machiavelli.GameArea), "sender must be a GameArea"
 	log_event(ControlEvent, sender.player.game,
 					classname="ControlEvent",
 					country=sender.player.contender.country,
-					area=sender.board_area)
+					area=sender.board_area,
+					new_home=kwargs["new_home"])
 
 signals.area_controlled.connect(log_control)
 

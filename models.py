@@ -320,7 +320,7 @@ class ControlEvent(BaseEvent):
 						'area': self.area.name
 						}
 
-def log_control(sender, new_home=False, **kwargs):
+def log_control(sender, **kwargs):
 	assert isinstance(sender, machiavelli.GameArea), "sender must be a GameArea"
 	log_event(ControlEvent, sender.player.game,
 					classname="ControlEvent",

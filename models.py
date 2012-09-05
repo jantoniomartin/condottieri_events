@@ -769,3 +769,27 @@ def log_expense(sender, **kwargs):
 					unit_type=_unit_type)
 
 signals.expense_paid.connect(log_expense)
+
+class UncoverEvent(BaseEvent):
+	""" Event triggered when a diplomat is uncovered. """
+	country = models.ForeignKey(scenarios.Country, blank=True, null=True)
+	area = models.ForeignKey(scenarios.Area)
+
+	def event_class(self):
+		return "uncover-event"
+
+	def __unicode__(self):
+		return _("A spy from %(country)s is uncovered in %(area)s.") % {
+					'country': self.country,
+					'area': self.area.name
+					}
+			
+def log_uncover(sender, **kwargs):
+	assert isinstance(sender, machiavelli.Diplomat), "sender must be a Diplomat"
+	log_event(UncoverEvent, sender.player.game,
+					classname="UncoverEvent",
+					country=sender.player.contender.country,
+					area=sender.area.board_area)
+
+signals.diplomat_uncovered.connect(log_uncover)
+

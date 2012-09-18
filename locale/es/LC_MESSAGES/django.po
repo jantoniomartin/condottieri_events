@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-21 08:14+0200\n"
+"POT-Creation-Date: 2012-09-18 11:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -91,143 +91,153 @@ msgstr "Los conflictos en %(area)s acaban en empate."
 msgid "%(unit)s converts into %(type)s."
 msgstr "%(unit)s se convierte en %(type)s."
 
-#: models.py:311
+#: models.py:313
+#, python-format
+msgid "%(area)s is now home of %(country)s."
+msgstr "%(area)s ahora es origen de %(country)s."
+
+#: models.py:318
 #, python-format
 msgid "%(country)s gets control of %(area)s."
 msgstr "%(country)s consigue el control de %(area)s."
 
-#: models.py:337
+#: models.py:345
 #, python-format
 msgid "%(unit)s advances into %(destination)s."
 msgstr "%(unit)s avanza a %(destination)s."
 
-#: models.py:366
+#: models.py:374
 #, python-format
 msgid "%(unit)s garrisons in the city."
 msgstr "%(unit)s se refugia en la ciudad."
 
-#: models.py:371
+#: models.py:379
 #, python-format
 msgid "%(unit)s retreats to %(destination)s."
 msgstr "%(unit)s se retira a %(destination)s"
 
-#: models.py:388
+#: models.py:396
 msgid "cannot carry out its support order."
 msgstr "no puede ejecutar su orden de apoyo."
 
-#: models.py:389
+#: models.py:397
 msgid "must retreat."
 msgstr "debe retirarse."
 
-#: models.py:390
+#: models.py:398
 msgid "surrenders."
 msgstr "se rinde."
 
-#: models.py:391
+#: models.py:399
 msgid "is now besieging."
 msgstr "empieza su asedio."
 
-#: models.py:392
+#: models.py:400
 msgid "changes of country."
 msgstr "cambia de país."
 
-#: models.py:393
+#: models.py:401
 msgid "becomes autonomous."
 msgstr "se convierte en autónoma."
 
-#: models.py:506
+#: models.py:514
 msgid "Government has been overthrown"
 msgstr "El gobierno ha sido derrocado"
 
-#: models.py:507
+#: models.py:515
 msgid "Has been conquered"
 msgstr "Ha sido conquistado"
 
-#: models.py:508
+#: models.py:516
 msgid "Has been declared enemy of Christendom"
 msgstr "Ha sido declarado enemigo de la Cristiandad"
 
-#: models.py:509
+#: models.py:517
 msgid "Has been eliminated"
 msgstr "Ha sido eliminado"
 
-#: models.py:510
+#: models.py:518
 msgid "Leader has been assassinated"
 msgstr "El líder ha sido asesinado"
 
-#: models.py:511
+#: models.py:519
 msgid "Excommunication has been lifted"
 msgstr "Se ha perdonado la excomunión"
 
-#: models.py:512
+#: models.py:520
 msgid "Leader suffered an assassination attempt"
 msgstr "El líder ha sufrido un intento de asesinato"
 
-#: models.py:612
+#: models.py:620
 #, python-format
 msgid "%(area)s is affected by famine."
 msgstr "%(area)s está afectada por la hambruna."
 
-#: models.py:613
+#: models.py:621
 #, python-format
 msgid "%(area)s has been affected by plague."
 msgstr "%(area)s ha sido afectada por una plaga."
 
-#: models.py:614
+#: models.py:622
 #, python-format
 msgid "A rebellion has broken out in %(area)s."
 msgstr "Una rebelión ha estallado en %(area)s."
 
-#: models.py:615
+#: models.py:623
 #, python-format
 msgid "%(area)s is affected by a storm."
 msgstr "%(area)s está afectada por una tormenta."
 
-#: models.py:697
+#: models.py:705
 #, python-format
 msgid "%(country)s raises %(ducats)s ducats."
 msgstr "%(country)s recauda %(ducats)s ducados."
 
-#: models.py:730
+#: models.py:738
 #, python-format
 msgid "%(country)s pays %(ducats)sd to relief famine in %(area)s"
 msgstr "%(country)s paga %(ducats)sd para aliviar la hambruna en %(area)s."
 
-#: models.py:732
+#: models.py:740
 #, python-format
 msgid "%(country)s pays %(ducats)sd to pacify the rebellion in %(area)s"
 msgstr "%(country)s paga %(ducats)sd para pacificar la rebelión en %(area)s"
 
-#: models.py:734
+#: models.py:742
 #, python-format
 msgid "%(country)s pays %(ducats)sd to cause a rebellion in %(area)s"
 msgstr "%(country)s paga %(ducats)sd para causar una rebelión en %(area)s"
 
-#: models.py:736
+#: models.py:744
 #, python-format
 msgid "%(country)s pays %(ducats)sd to protect %(unit)s from bribes"
 msgstr "%(country)s paga %(ducats)sd para proteger a %(unit)s de sobornos"
 
-#: models.py:738
+#: models.py:746
 #, python-format
 msgid "%(country)s pays %(ducats)sd to disband %(unit)s"
 msgstr "%(country)s paga %(ducats)sd para desbandar %(unit)s"
 
-#: models.py:740
+#: models.py:748
 #, python-format
 msgid "%(country)s pays %(ducats)sd to buy %(unit)s"
 msgstr "%(country)s paga %(ducats)sd para comprar %(unit)s."
 
-#: models.py:742
+#: models.py:750
 #, python-format
 msgid ""
 "%(country)s pays %(ducats)sd to turn %(unit)s into an autonomous garrison"
 msgstr ""
 "%(country)s paga %(ducats)sd para convertir %(unit)s en guarnición autónoma"
 
-#: models.py:744
+#: models.py:752
 msgid "Unknown expense"
 msgstr "Gasto desconocido"
+
+#: models.py:782
+#, python-format
+msgid "A spy from %(country)s is uncovered in %(area)s."
+msgstr "Se descubre a un espía de %(country)s en %(area)s."
 
 #: paginator.py:27
 msgid "Spring"

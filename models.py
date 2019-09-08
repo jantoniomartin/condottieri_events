@@ -79,7 +79,7 @@ BaseEvent is the parent class for all kind of game events.
 							'log': capfirst(self)
 							}
 
-	def __unicode__(self):
+	def __str__(self):
 		return str(self.get_concrete())
 	
 	class Meta:
@@ -104,7 +104,7 @@ class NewUnitEvent(BaseEvent):
 	def event_class(self):
 		return "new-unit-event"
 
-	def __unicode__(self):
+	def __str__(self):
 		return _("New %(type)s in %(area)s.") % {
 						'country': self.country,
 						'type': self.get_type_display(),
@@ -130,7 +130,7 @@ class DisbandEvent(BaseEvent):
 	def event_class(self):
 		return "disband-event"
 
-	def __unicode__(self):
+	def __str__(self):
 		if self.country:
 			return _("%(type)s in %(area)s is disbanded.") % {
 						'country': self.country,
@@ -169,7 +169,7 @@ class OrderEvent(BaseEvent):
 	def event_class(self):
 		return "order-event"
 
-	def __unicode__(self):
+	def __str__(self):
 		return self.get_message()
 		#country_info = "<small>(%s)</small>" % (unicode(self.country),)
 		#msg = self.get_message()
@@ -258,7 +258,7 @@ class StandoffEvent(BaseEvent):
 	def event_class(self):
 		return "standoff-event"
 
-	def __unicode__(self):
+	def __str__(self):
 		return _("Conflicts in %(area)s result in a standoff.") % {
 						'area': self.area.name,
 						}
@@ -282,7 +282,7 @@ class ConversionEvent(BaseEvent):
 	def event_class(self):
 		return "conversion-event"
 
-	def __unicode__(self):
+	def __str__(self):
 		return _("%(unit)s converts into %(type)s.") % {
 						'unit': self.unit_string(self.before, self.area),
 						'type': self.get_after_display()
@@ -308,7 +308,7 @@ class ControlEvent(BaseEvent):
 	def event_class(self):
 		return "control-event"
 
-	def __unicode__(self):
+	def __str__(self):
 		if self.new_home:
 			return _("%(area)s is now home of %(country)s.") % {
 						'country': self.country,
@@ -341,7 +341,7 @@ class MovementEvent(BaseEvent):
 	def event_class(self):
 		return "movement-event"
 
-	def __unicode__(self):
+	def __str__(self):
 		return _("%(unit)s advances into %(destination)s.") % {
 				'unit': self.unit_string(self.type,	self.origin),
 				'destination': self.destination.name
@@ -369,7 +369,7 @@ class RetreatEvent(BaseEvent):
 	def event_class(self):
 		return "movement-event"
 
-	def __unicode__(self):
+	def __str__(self):
 		if self.origin == self.destination:
 			return _("%(unit)s garrisons in the city.") % {
 					'unit': self.unit_string(self.type,	self.origin),
@@ -438,7 +438,7 @@ class UnitEvent(BaseEvent):
 		elif self.message == 4 or self.message == 5:
 			return 'bribe-event'
 
-	def __unicode__(self):
+	def __str__(self):
 		return "%(unit)s %(message)s" % {
 						'unit': self.unit_string(self.type, self.area),
 						'message': self.get_message_display()
@@ -544,7 +544,7 @@ class CountryEvent(BaseEvent):
 	country = models.ForeignKey(scenarios.Country)
 	message = models.PositiveIntegerField(choices=COUNTRY_EVENTS)
 
-	def __unicode__(self):
+	def __str__(self):
 		return "%(country)s: %(message)s" % {
 									'country': self.country.name,
 									'message': self.get_message_display()
@@ -641,7 +641,7 @@ class DisasterEvent(BaseEvent):
 	area = models.ForeignKey(scenarios.Area)
 	message = models.PositiveIntegerField(choices=DISASTER_EVENTS)
 
-	def __unicode__(self):
+	def __str__(self):
 		msg = self.get_message_display()
 		return msg % {'area': self.area.name,}
 	
@@ -701,7 +701,7 @@ class IncomeEvent(BaseEvent):
 	def event_class(self):
 		return "income-event"
 
-	def __unicode__(self):
+	def __str__(self):
 		return _("%(country)s raises %(ducats)s ducats.") % {
 						'country': self.country,
 						'ducats': self.ducats,
@@ -726,7 +726,7 @@ class ExpenseEvent(BaseEvent):
 	def event_class(self):
 		return "expense-event"
 
-	def __unicode__(self):
+	def __str__(self):
 		data = {
 			'country': self.country,
 			'ducats' : self.ducats,
@@ -778,7 +778,7 @@ class UncoverEvent(BaseEvent):
 	def event_class(self):
 		return "uncover-event"
 
-	def __unicode__(self):
+	def __str__(self):
 		return _("A spy from %(country)s is uncovered in %(area)s.") % {
 					'country': self.country,
 					'area': self.area.name

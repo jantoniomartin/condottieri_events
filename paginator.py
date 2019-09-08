@@ -58,7 +58,7 @@ class SeasonPaginator(object):
 			season = int(season)
 		except ValueError:
 			raise SeasonNotAnInteger('The season number is not an integer')
-		if not season in SEASONS.keys():
+		if not season in list(SEASONS.keys()):
 			raise SeasonOutOfRange('The season is out of range')
 		try:
 			year = int(year)

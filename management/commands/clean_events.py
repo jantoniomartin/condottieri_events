@@ -1,13 +1,13 @@
 from datetime import datetime, timedelta
 
-from django.core.management.base import NoArgsCommand, CommandError
+from django.core.management.base import BaseCommand, CommandError
 
 from condottieri_events import models
 import machiavelli.models as machiavelli
 
 AGE=30*24*60*60
 
-class Command(NoArgsCommand):
+class Command(BaseCommand):
 	"""
 This script deletes all events in finished games that are older than AGE days.
 	"""

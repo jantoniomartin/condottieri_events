@@ -35,7 +35,7 @@ class BaseEvent(models.Model):
 	"""
 BaseEvent is the parent class for all kind of game events.
 	"""
-	game = models.ForeignKey(machiavelli.Game)
+	game = models.ForeignKey(machiavelli.Game, on_delete=models.CASCADE)
 	year = models.PositiveIntegerField()
 	season = models.PositiveIntegerField(choices=machiavelli.SEASONS)
 	phase = models.PositiveIntegerField(choices=machiavelli.GAME_PHASES)
@@ -97,9 +97,9 @@ def log_event(event_class, game, **kwargs):
 class NewUnitEvent(BaseEvent):
 	""" Event triggered when a new unit is placed in the map. """
 
-	country = models.ForeignKey(scenarios.Country)
+	country = models.ForeignKey(scenarios.Country, on_delete=models.CASCADE)
 	type = models.CharField(max_length=1, choices=machiavelli.UNIT_TYPES)
-	area = models.ForeignKey(scenarios.Area)
+	area = models.ForeignKey(scenarios.Area, on_delete=models.CASCADE)
 	
 	def event_class(self):
 		return "new-unit-event"
@@ -123,9 +123,9 @@ signals.unit_placed.connect(log_new_unit)
 
 class DisbandEvent(BaseEvent):
 	""" Event triggered when a unit is disbanded. """
-	country = models.ForeignKey(scenarios.Country, blank=True, null=True)
+	country = models.ForeignKey(scenarios.Country, blank=True, null=True, on_delete=models.CASCADE)
 	type = models.CharField(max_length=1, choices=machiavelli.UNIT_TYPES)
-	area = models.ForeignKey(scenarios.Area)
+	area = models.ForeignKey(scenarios.Area, on_delete=models.CASCADE)
 
 	def event_class(self):
 		return "disband-event"
@@ -154,16 +154,16 @@ signals.unit_disbanded.connect(log_disband)
 
 class OrderEvent(BaseEvent):
 	""" Event triggered when an order is confirmed. """
-	country = models.ForeignKey(scenarios.Country)
+	country = models.ForeignKey(scenarios.Country, on_delete=models.CASCADE)
 	type = models.CharField(max_length=1, choices=machiavelli.UNIT_TYPES)
-	origin = models.ForeignKey(scenarios.Area, related_name='event_origin')
+	origin = models.ForeignKey(scenarios.Area, related_name='event_origin', on_delete=models.CASCADE)
 	code = models.CharField(max_length=1, choices=machiavelli.ORDER_CODES)
-	destination = models.ForeignKey(scenarios.Area, blank=True, null=True, related_name='event_destination')
+	destination = models.ForeignKey(scenarios.Area, blank=True, null=True, related_name='event_destination', on_delete=models.CASCADE)
 	conversion = models.CharField(max_length=1, choices=machiavelli.UNIT_TYPES, blank=True, null=True)
 	subtype = models.CharField(max_length=1, choices=machiavelli.UNIT_TYPES, blank=True, null=True)
-	suborigin = models.ForeignKey(scenarios.Area, related_name='event_suborigin', blank=True, null=True)
+	suborigin = models.ForeignKey(scenarios.Area, related_name='event_suborigin', blank=True, null=True, on_delete=models.CASCADE)
 	subcode = models.CharField(max_length=1, choices=machiavelli.ORDER_CODES, blank=True, null=True)
-	subdestination = models.ForeignKey(scenarios.Area, blank=True, null=True, related_name='event_subdestination')
+	subdestination = models.ForeignKey(scenarios.Area, blank=True, null=True, related_name='event_subdestination', on_delete=models.CASCADE)
 	subconversion = models.CharField(max_length=1, choices=machiavelli.UNIT_TYPES, blank=True, null=True)
 
 	def event_class(self):
@@ -253,7 +253,7 @@ signals.order_placed.connect(log_order)
 
 class StandoffEvent(BaseEvent):
 	""" Event triggered when a standoff happens. """
-	area = models.ForeignKey(scenarios.Area)
+	area = models.ForeignKey(scenarios.Area, on_delete=models.CASCADE)
 
 	def event_class(self):
 		return "standoff-event"
@@ -274,8 +274,8 @@ signals.standoff_happened.connect(log_standoff)
 class ConversionEvent(BaseEvent):
 	""" Event triggered when a unit changes its type. """
 
-	country = models.ForeignKey(scenarios.Country, null=True, blank=True)
-	area = models.ForeignKey(scenarios.Area)
+	country = models.ForeignKey(scenarios.Country, null=True, blank=True, on_delete=models.CASCADE)
+	area = models.ForeignKey(scenarios.Area, on_delete=models.CASCADE)
 	before = models.CharField(max_length=1, choices=machiavelli.UNIT_TYPES)
 	after = models.CharField(max_length=1, choices=machiavelli.UNIT_TYPES)
 
@@ -301,8 +301,8 @@ signals.unit_converted.connect(log_conversion)
 
 class ControlEvent(BaseEvent):
 	""" Event triggered when a player gets the control of a province. """
-	country = models.ForeignKey(scenarios.Country)
-	area = models.ForeignKey(scenarios.Area)
+	country = models.ForeignKey(scenarios.Country, on_delete=models.CASCADE)
+	area = models.ForeignKey(scenarios.Area, on_delete=models.CASCADE)
 	new_home = models.BooleanField(default=False)
 
 	def event_class(self):
@@ -333,10 +333,10 @@ signals.area_controlled.connect(log_control)
 class MovementEvent(BaseEvent):
 	""" Event triggered when a unit moves to a different province. """
 
-	country = models.ForeignKey(scenarios.Country, null=True, blank=True)
+	country = models.ForeignKey(scenarios.Country, null=True, blank=True, on_delete=models.CASCADE)
 	type = models.CharField(max_length=1, choices=machiavelli.UNIT_TYPES)
-	origin = models.ForeignKey(scenarios.Area, related_name="movement_origin")
-	destination = models.ForeignKey(scenarios.Area, related_name="movement_destination")
+	origin = models.ForeignKey(scenarios.Area, related_name="movement_origin", on_delete=models.CASCADE)
+	destination = models.ForeignKey(scenarios.Area, related_name="movement_destination", on_delete=models.CASCADE)
 
 	def event_class(self):
 		return "movement-event"
@@ -361,10 +361,10 @@ signals.unit_moved.connect(log_movement)
 class RetreatEvent(BaseEvent):
 	""" Event triggered when a unit retreats. """
 
-	country = models.ForeignKey(scenarios.Country, null=True, blank=True)
+	country = models.ForeignKey(scenarios.Country, null=True, blank=True, on_delete=models.CASCADE)
 	type = models.CharField(max_length=1, choices=machiavelli.UNIT_TYPES)
-	origin = models.ForeignKey(scenarios.Area, related_name="retreat_origin")
-	destination = models.ForeignKey(scenarios.Area, related_name="retreat_destination")
+	origin = models.ForeignKey(scenarios.Area, related_name="retreat_origin", on_delete=models.CASCADE)
+	destination = models.ForeignKey(scenarios.Area, related_name="retreat_destination", on_delete=models.CASCADE)
 
 	def event_class(self):
 		return "movement-event"
@@ -421,9 +421,9 @@ class UnitEvent(BaseEvent):
 	Each condition must have its own signal.
 	"""
 
-	country = models.ForeignKey(scenarios.Country, null=True, blank=True)
+	country = models.ForeignKey(scenarios.Country, null=True, blank=True, on_delete=models.CASCADE)
 	type = models.CharField(max_length=1, choices=machiavelli.UNIT_TYPES)
-	area = models.ForeignKey(scenarios.Area)
+	area = models.ForeignKey(scenarios.Area, on_delete=models.CASCADE)
 	message = models.PositiveIntegerField(choices=UNIT_EVENTS)
 	
 	def event_class(self):
@@ -541,7 +541,7 @@ class CountryEvent(BaseEvent):
 	
 	Each condition must have its own signal.
 	"""
-	country = models.ForeignKey(scenarios.Country)
+	country = models.ForeignKey(scenarios.Country, on_delete=models.CASCADE)
 	message = models.PositiveIntegerField(choices=COUNTRY_EVENTS)
 
 	def __str__(self):
@@ -638,7 +638,7 @@ class DisasterEvent(BaseEvent):
 	
 	Each condition must have its own signal.
 	"""
-	area = models.ForeignKey(scenarios.Area)
+	area = models.ForeignKey(scenarios.Area, on_delete=models.CASCADE)
 	message = models.PositiveIntegerField(choices=DISASTER_EVENTS)
 
 	def __str__(self):
@@ -695,7 +695,7 @@ signals.storm_marker_placed.connect(log_storm_marker)
 
 class IncomeEvent(BaseEvent):
 	""" Event triggered when a country receives income """
-	country = models.ForeignKey(scenarios.Country)
+	country = models.ForeignKey(scenarios.Country, on_delete=models.CASCADE)
 	ducats = models.PositiveIntegerField()
 
 	def event_class(self):
@@ -717,10 +717,10 @@ def log_income(sender, **kwargs):
 signals.income_raised.connect(log_income)
 
 class ExpenseEvent(BaseEvent):
-	country = models.ForeignKey(scenarios.Country)
+	country = models.ForeignKey(scenarios.Country, on_delete=models.CASCADE)
 	ducats = models.PositiveIntegerField(default=0)
 	type = models.PositiveIntegerField(choices=machiavelli.EXPENSE_TYPES)
-	area = models.ForeignKey(scenarios.Area, null=True, blank=True)
+	area = models.ForeignKey(scenarios.Area, null=True, blank=True, on_delete=models.CASCADE)
 	unit_type = models.CharField(max_length=1, choices=machiavelli.UNIT_TYPES, null=True, blank=True)
 
 	def event_class(self):
@@ -772,8 +772,8 @@ signals.expense_paid.connect(log_expense)
 
 class UncoverEvent(BaseEvent):
 	""" Event triggered when a diplomat is uncovered. """
-	country = models.ForeignKey(scenarios.Country, blank=True, null=True)
-	area = models.ForeignKey(scenarios.Area)
+	country = models.ForeignKey(scenarios.Country, blank=True, null=True, on_delete=models.CASCADE)
+	area = models.ForeignKey(scenarios.Area, on_delete=models.CASCADE)
 
 	def event_class(self):
 		return "uncover-event"

@@ -1,0 +1,31 @@
+- model: machiavelli.game
+  pk: 1
+  fields:
+    title: Inaugural
+    slug: Inaugural
+    year: 1525
+    season: 3
+    phase: 0
+    slots: 0
+    scenario: 1
+    created_by: 1
+    visible: false
+    map_outdated: false
+    time_limit: 172800
+    last_phase_change: 2010-05-13 22:56:32
+    created: null
+    started: 2010-03-16 21:23:00
+    finished: 2010-05-13 23:24:00
+    autostart: true
+    cities_to_win: 15
+    require_home_cities: false
+    extra_conquered_cities: 0
+    years_limit: 0
+    fast: false
+    uses_karma: true
+    paused: false
+    private: false
+    comment: null
+    version: 0
+    extended_deadline: false
+    teams: 0

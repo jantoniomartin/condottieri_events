@@ -1,0 +1,27 @@
+- model: condottieri_scenarios.scenario
+  pk: 1
+  fields:
+    setting: 1
+    name: spanish
+    title_en: The Spanish Preponderance
+    title_es: "La Preponderancia Espa\xF1ola"
+    title_ca: "La Preponder\xE0ncia Espanyola"
+    title_de: ''
+    description_en: During the later stages of the Italian Wars, the power balance
+      situation was completely changed from earlier periods. The French had lost their
+      hold on Milan and Genoa. Spain (linked with Naples) and Austria, both ruled
+      by the Hapsburg Emperor Charles V, had gained Milan, and threatened to dominate
+      both Northern and Southern Italy.
+    description_es: "Durante las primeras etapas de las Guerras Italianas, la situaci\xF3n
+      de equilibrio de poder cambi\xF3 completamente respecto a los periodos anteriores.
+      Los franceses hab\xEDan perdido su influencia en Mil\xE1n y G\xE9nova. Espa\xF1a
+      (unida a N\xE1poles) y Austria, ambas gobernadas por el Emperador Carlos V de
+      Hausburgo, hab\xEDan ganado Mil\xE1n, y amenazaban con dominar tanto el norte
+      como el sur de Italia."
+    description_ca: ''
+    description_de: ''
+    designer: James B. Wood
+    start_year: 1521
+    editor: 1
+    enabled: true
+    published: 2010-03-16
